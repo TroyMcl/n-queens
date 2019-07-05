@@ -13,6 +13,8 @@
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
+// O(C^n) - Exponential for
+
 window.solver = function(row, n, board, conflictChecker, cb) {
   if (row === n) {
     return cb();
@@ -25,8 +27,6 @@ window.solver = function(row, n, board, conflictChecker, cb) {
     }
     board.togglePiece(row, i);
   }
-
-
 };
 
 
@@ -62,18 +62,15 @@ window.countNRooksSolutions = function(n) {
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
-  var solution = undefined; //fixme
   var board = new Board({n: n});
+  var solution = board.rows();
 
-  if (n === 2 || n === 3) {
-    solution =0;
-  } else {
-    solver(0, n, board, "hasAnyQueensConflicts", function() {
-      solution = _.map(board.rows(), function(row) {
-        return row.slice();
-      });
+  solver(0, n, board, "hasAnyQueensConflicts", function() {
+    solution = _.map(board.rows(), function(row) {
+      return row.slice();
     });
-  }
+  });
+
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
 };

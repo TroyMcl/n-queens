@@ -78,6 +78,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
+    // O(n) - linear
     hasRowConflictAt: function(rowIndex) {
       var row = this.get(rowIndex);
       var counter = 0;
@@ -91,6 +92,7 @@
     },
 
     // test if any rows on this board contain conflicts
+    // O(n) - linear
     hasAnyRowConflicts: function() {
       var allRows = this.rows();
 
@@ -109,6 +111,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific column on this board contains a conflict
+    // O(n) - linear
     hasColConflictAt: function(colIndex) {
       var allRows = this.rows();
       var counter = 0;
@@ -119,6 +122,7 @@
     },
 
     // test if any columns on this board contain conflicts
+    // O(n^2) - quadratic
     hasAnyColConflicts: function() {
       var allRows = this.rows();
 
@@ -142,6 +146,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
+    // O(n) - linear
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       var column = majorDiagonalColumnIndexAtFirstRow;
       var allRows = this.rows();
@@ -169,6 +174,7 @@
     },
 
     // test if any major diagonals on this board contain conflicts
+    // O(n^2) - quadratic
     hasAnyMajorDiagonalConflicts: function() {
 
       var allRows = this.rows();
@@ -191,6 +197,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
+    // O(n) - linear
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       var column = minorDiagonalColumnIndexAtFirstRow;
       var allRows = this.rows();
@@ -219,6 +226,7 @@
     },
 
     // test if any minor diagonals on this board contain conflicts
+    // O(n^2) - quadratic
     hasAnyMinorDiagonalConflicts: function() {
       var allRows = this.rows();
 
